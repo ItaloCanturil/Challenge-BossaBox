@@ -16,11 +16,10 @@
         <button @click="addModal()">+ Add</button>
       </nav>
 
-      <modalAdd/>
+      <ModalAdd :openedModal='openedModal'/>
 
       <section class="card-field">
-        <card/>
-        <card/>
+        <card :items='[]'/>
       </section>
     </div>
   </div>
@@ -28,22 +27,16 @@
 
 <script>
 import Card from './components/Card'
-import modalAdd from './components/ModalAdd'
+import ModalAdd from './components/ModalAdd'
 
 export default {
   components: {
     Card,
-    modalAdd
+    ModalAdd
   },
   data () {
     return {
       openedModal: false,
-      form: {
-        name: '',
-        link: '',
-        description: '',
-        tags: ''
-      }
     }
   },
   methods: {
@@ -87,28 +80,5 @@ body{
 
 .nav-search {
   margin-top: -30px;
-}
-
-.modal-add {
-  background: rgb(112, 112, 112);
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 50vh;
-  position: absolute;
-  width: 100%;
-}
-
-.title {
-  display: flex;
-  justify-content: space-between;
-  width: 90%;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
 }
 </style>

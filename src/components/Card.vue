@@ -11,7 +11,27 @@
 
 <script>
 export default {
-  name: 'Card'
+  name: 'Card',
+  
+
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
+    link: {
+      type: String,
+      default: ''
+    },
+    description: {
+      type: String,
+      default: ''
+    },
+    tags: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 
