@@ -2,7 +2,7 @@
   <section class="modal-add" v-if="openedModal == true">
     <div class="title">
       <h1>Add a new tool</h1>
-      <button @click="closeModal()">
+      <button @click="$emit('close')">
         <img src="assets/Icon-Close-2px@2x.png" alt="Close">
       </button>
     </div>
@@ -23,12 +23,10 @@
 <script>
 export default {
   name: 'modalAdd',
-  forms: {
-    toolName: '',
-    link: '',
-    description: '',
-    tags: ''
-  },
+  toolName: '',
+  link: '',
+  description: '',
+  tags: '',
   item: [],
 
   props: {
@@ -39,13 +37,10 @@ export default {
   },
 
   methods: {
-    closeModal() {
-      this.openedModal = false
-    },
     addTool() {
       if(!this.toolName, !this.link, !this.description, !this.tags) return
 
-      console.log(this.item.unshift(this.toolName, this.link, this.description, this.tags))
+      console.log(this.toolName, this.link, this.description, this.tags)
 
       this.toolName = '',
       this.link = '',

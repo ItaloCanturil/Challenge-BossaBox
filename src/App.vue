@@ -16,7 +16,7 @@
         <button @click="addModal()">+ Add</button>
       </nav>
 
-      <ModalAdd :openedModal='openedModal' v-for="items in item" :key="items"/>
+      <ModalAdd :openedModal='openedModal' @close="closeModal()"/>
 
       <section class="card-field">
         <card :items='[]'/>
