@@ -6,28 +6,32 @@
         <img src="assets/Icon-Close-2px@2x.png" alt="Close">
       </button>
     </div>
-    <form class="form">
+    <section class="form">
       <label for="form__name">Tool Name</label>
       <input type="text" class="form__name" v-model="toolName">
       <label for="form__link">Tool Link</label>
       <input type="text" class="form__link" v-model="link">
       <label for="form__description">Tool Description</label>
-      <input type="text" class="form__description" v-model="description">
+      <textarea class="form__description" v-model="description"></textarea>
       <label for="form__tags">Tags</label>
       <input type="text" class="form__tags" v-model="tags">
       <button class="form__btn" @click="addTool()">Add Tool</button>
-    </form>
+    </section>
   </section>
 </template>
 
 <script>
 export default {
   name: 'modalAdd',
-  toolName: '',
-  link: '',
-  description: '',
-  tags: '',
-  item: [],
+
+  data () {
+    return {
+      toolName: '',
+      link: '',
+      description: '',
+      tags: ''
+    }
+  },
 
   props: {
     openedModal: {
@@ -38,13 +42,18 @@ export default {
 
   methods: {
     addTool() {
-      if(!this.toolName, !this.link, !this.description, !this.tags) return
+      if(!this.toolName || !this.link || !this.description || !this.tags) return
 
-      console.log(this.toolName, this.link, this.description, this.tags)
+      this.$emit('form', {
+        toolName: this.toolName,
+        link: this.link,
+        description: this.description,
+        tags: this.tags
+      })
 
-      this.toolName = '',
-      this.link = '',
-      this.description = '',
+      this.toolName = ''
+      this.link = ''
+      this.description = ''
       this.tags = ''
     }
   }
@@ -73,5 +82,25 @@ export default {
   display: flex;
   flex-direction: column;
   width: 90%;
+}
+
+.form__name, .form__link, .form__tags {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.form__description {
+  max-height: 100px;
+  max-width: 100%;
+}
+
+.form__btn {
+  border-radius: 5px;
+  border: none;
+  width: 60%;
+  margin: 0 auto;
+  padding: 5px;
 }
 </style>

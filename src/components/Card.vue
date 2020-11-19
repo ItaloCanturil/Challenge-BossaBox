@@ -1,11 +1,12 @@
 <template>
-  <section class="card" v-bind="form">
+  <section class="card">
     <div class="card__container">
-      <a href="#" class="container__title">Test</a>
-      <button class="container__close">Remove</button>
+      <a href="#" class="container__title"><p>{{item.name}}</p></a>
+      <button class="container__close" @click="$emit('closecard')">Remove</button>
     </div>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur laboriosam quis quaerat temporibus delectus, dicta sequi amet adipisci modi sapiente explicabo odio debitis at eius corporis? Inventore distinctio obcaecati ratione.</p>
-    <p>#test #test #test #test #test</p>
+    <p>{{item.description}}</p>
+    <p>{{item.link}}</p>
+    <p>{{item.tags}}</p>
   </section>
 </template>
 
@@ -13,23 +14,10 @@
 export default {
   name: 'Card',
   
-
   props: {
-    name: {
-      type: String,
-      default: ''
-    },
-    link: {
-      type: String,
-      default: ''
-    },
-    description: {
-      type: String,
-      default: ''
-    },
-    tags: {
-      type: String,
-      default: ''
+    item: {
+      type: Object,
+      required: true
     }
   }
 }
@@ -41,6 +29,7 @@ export default {
    border-radius: 10px;
    margin: 30px 0 15px;
    padding: 15px;
+   min-width: 350px;
  }
 
  .card__container {

@@ -16,10 +16,14 @@
         <button @click="addModal()">+ Add</button>
       </nav>
 
-      <ModalAdd :openedModal='openedModal' @close="closeModal()"/>
+      <ModalAdd
+        :openedModal='openedModal'
+        @close="closeModal()"
+        @form='addItem'
+      />
 
       <section class="card-field">
-        <card :items='[]'/>
+        <card :item="items" v-for="items in item" :key="items" @closecard='removeItem()'/>
       </section>
     </div>
   </div>
@@ -37,6 +41,7 @@ export default {
   data () {
     return {
       openedModal: false,
+      item: []
     }
   },
   methods: {
@@ -45,6 +50,12 @@ export default {
     },
     closeModal() {
       this.openedModal = false
+    },
+    addItem(items) {
+      this.item.unshift(items)
+    },
+    removeItem() {
+      this.item.splice(this.item, 1)
     }
   }
 }
