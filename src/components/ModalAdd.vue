@@ -29,8 +29,15 @@ export default {
       toolName: '',
       link: '',
       description: '',
-      tags: ''
+      tags: '',
+      info: null
     }
+  },
+
+  mounted () {
+    axios
+      .get('https://gitlab.com/bossabox/challenge-fake-api/tree/master')
+      .then( response => {this.info = response})
   },
 
   props: {
