@@ -38,7 +38,7 @@ export default {
 
   mounted () {
     axios
-      .get('https://gitlab.com/bossabox/challenge-fake-api/tree/master')
+      .get('http://localhost:3000/tools')
       .then( response => {this.info = response})
   },
 

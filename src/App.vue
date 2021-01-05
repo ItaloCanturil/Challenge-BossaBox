@@ -24,6 +24,7 @@
 
       <section class="card-field">
         <card :item="items" v-for="items in item" :key="items" @closecard='removeItem()'/>
+        <div>{{ info[0].title }}</div>
       </section>
     </div>
   </div>
@@ -32,6 +33,7 @@
 <script>
 import Card from './components/Card'
 import ModalAdd from './components/ModalAdd'
+import axios from 'axios'
 
 export default {
   components: {
@@ -41,9 +43,17 @@ export default {
   data () {
     return {
       openedModal: false,
-      item: []
+      item: [],
+      info: null
     }
   },
+
+  mounted () {
+    axios
+      .get('http://localhost:3000/tools')
+      .then( response => {this.info = response.data})
+  },
+
   methods: {
     addModal() {
       this.openedModal = true
