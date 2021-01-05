@@ -7,7 +7,7 @@
       </button>
     </div>
     <section class="form">
-      <label for="form__name">Tool Name</label>
+      <label for="form__name">{{ info }}</label>
       <input type="text" class="form__name" v-model="toolName">
       <label for="form__link">Tool Link</label>
       <input type="text" class="form__link" v-model="link">
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'modalAdd',
 
