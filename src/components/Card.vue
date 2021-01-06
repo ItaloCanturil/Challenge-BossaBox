@@ -1,16 +1,18 @@
 <template>
   <section class="card">
     <div class="card__container">
-      <a href="#" class="container__title"><p>{{item.name}}</p></a>
+      <a href="#" class="container__title"><p>{{item.title}}</p></a>
       <button class="container__close" @click="$emit('closecard')">Remove</button>
     </div>
     <p>{{item.description}}</p>
-    <p>{{item.link}}</p>
+    <a href="#">{{item.link}}</a>
     <p>{{item.tags}}</p>
   </section>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'Card',
   
@@ -19,7 +21,20 @@ export default {
       type: Object,
       required: true
     }
-  }
+  },
+
+  data () {
+    return {
+      info: null
+    }
+  },
+
+  mounted () {
+    axios
+      .get('http://localhost:3000/tools')
+      .then( response => {this.info = response.data})
+  },
+
 }
 </script>
 

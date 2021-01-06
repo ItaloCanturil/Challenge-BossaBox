@@ -23,8 +23,7 @@
       />
 
       <section class="card-field">
-        <card :item="items" v-for="items in item" :key="items" @closecard='removeItem()'/>
-        <div>{{ info[0].title }}</div>
+        <card :item="items" v-for="items in info" :key="items" @closecard='removeItem()'/>
       </section>
     </div>
   </div>
