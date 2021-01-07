@@ -53,12 +53,15 @@ export default {
     addTool() {
       if(!this.toolName || !this.link || !this.description || !this.tags) return
 
-      this.$emit('form', {
+      let card = this.$emit('form', {
         toolName: this.toolName,
         link: this.link,
         description: this.description,
         tags: this.tags
       })
+
+      axios
+      .post('http://localhost:3000/tools', card)
 
       this.toolName = ''
       this.link = ''

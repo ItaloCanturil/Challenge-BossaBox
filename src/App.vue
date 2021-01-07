@@ -64,7 +64,8 @@ export default {
       this.item.unshift(items)
     },
     removeItem() {
-      this.item.splice(this.item, 1)
+      axios
+        .delete('http://localhost:3000/tools', {params: {'id': this.item}})
     }
   }
 }
