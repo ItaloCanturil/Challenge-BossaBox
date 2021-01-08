@@ -8,7 +8,7 @@
     </div>
     <section class="form">
       <label for="form__name">Tool name</label>
-      <input type="text" class="form__name" v-model="toolName">
+      <input type="text" class="form__name" v-model="title">
       <label for="form__link">Tool Link</label>
       <input type="text" class="form__link" v-model="link">
       <label for="form__description">Tool Description</label>
