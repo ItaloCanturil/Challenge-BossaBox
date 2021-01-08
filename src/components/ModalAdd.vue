@@ -28,7 +28,7 @@ export default {
 
   data () {
     return {
-      toolName: '',
+      title: '',
       link: '',
       description: '',
       tags: '',
@@ -51,19 +51,16 @@ export default {
 
   methods: {
     addTool() {
-      if(!this.toolName || !this.link || !this.description || !this.tags) return
+      if(!this.title || !this.link || !this.description || !this.tags) return
 
-      let card = this.$emit('form', {
-        toolName: this.toolName,
+      this.$emit('form', {
+        title: this.title,
         link: this.link,
         description: this.description,
         tags: this.tags
       })
 
-      axios
-      .post('http://localhost:3000/tools', card)
-
-      this.toolName = ''
+      this.title = ''
       this.link = ''
       this.description = ''
       this.tags = ''

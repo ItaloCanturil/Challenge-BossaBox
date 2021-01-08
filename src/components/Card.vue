@@ -2,7 +2,7 @@
   <section class="card">
     <div class="card__container">
       <a href="#" class="container__title"><p>{{item.title}}</p></a>
-      <button class="container__close" @click="$emit('closecard')">Remove</button>
+      <button class="container__close" @click="removeCard">Remove</button>
     </div>
     <p>{{item.description}}</p>
     <a href="#">{{item.link}}</a>
@@ -11,29 +11,30 @@
 </template>
 
 <script>
-import axios from 'axios'
 
 export default {
   name: 'Card',
+
+  // data () {
+  //   return {
+  //     id: item.id
+  //   }
+  // },
   
   props: {
     item: {
       type: Object,
       required: true
-    }
-  },
+    },
 
-  data () {
-    return {
-      info: null
+    methods: {
+      removeCard () {
+        this.$emit('id', {
+          id: this.item.id
+        })
+      }
     }
-  },
-
-  mounted () {
-    axios
-      .get('http://localhost:3000/tools')
-      .then( response => {this.info = response.data})
-  },
+  }
 
 }
 </script>

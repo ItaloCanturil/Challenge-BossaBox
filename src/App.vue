@@ -23,7 +23,13 @@
       />
 
       <section class="card-field">
-        <card :item="items" v-for="items in info" :key="items" @closecard='removeItem()'/>
+        <card 
+          :item="items"
+          v-for="items in info"
+          :key="items"
+          @removeCard='removeItem(item)'
+        />
+        <div>{{info[0].id}}</div>
       </section>
     </div>
   </div>
@@ -39,11 +45,12 @@ export default {
     Card,
     ModalAdd
   },
+
   data () {
     return {
       openedModal: false,
-      item: [],
-      info: null
+      info: null,
+      articleId: null
     }
   },
 
@@ -61,11 +68,15 @@ export default {
       this.openedModal = false
     },
     addItem(items) {
-      this.item.unshift(items)
-    },
-    removeItem() {
       axios
-        .delete('http://localhost:3000/tools', {params: {'id': this.item}})
+          .post('http://localhost:3000/tools', items)
+          .then( response => this.articleId = response.data.id)
+    },
+    removeItem(id) {
+      console.log(id)
+      // for(let i = 0; i < id.length; i++){
+      //   console.log(id)
+      // }
     }
   }
 }
