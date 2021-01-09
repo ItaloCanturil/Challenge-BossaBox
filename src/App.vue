@@ -28,7 +28,7 @@
           v-for="items in info"
           :key="items"
           @removeCard='removeItem(item)'
-        />
+         />
         <div>{{info[0].id}}</div>
       </section>
     </div>
