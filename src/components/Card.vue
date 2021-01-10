@@ -17,7 +17,7 @@ export default {
 
   // data () {
   //   return {
-  //     id: item.id
+  //     id: this.item.id
   //   }
   // },
   
@@ -26,13 +26,17 @@ export default {
       type: Object,
       required: true
     },
+    // id: {
+    //   type: Number,
+    //   required: true
+    // }
+  },
 
-    methods: {
-      removeCard () {
-        this.$emit('id', {
-          id: this.item.id
-        })
-      }
+  methods: {
+    removeCard () {
+      this.$emit('removeCard', {
+        id: this.item.id
+      })
     }
   }
 

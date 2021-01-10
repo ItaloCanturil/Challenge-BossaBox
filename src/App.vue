@@ -27,7 +27,7 @@
           :item="items"
           v-for="items in info"
           :key="items"
-          @removeCard='removeItem(item)'
+          @removeCard='removeItem($event)'
          />
         <div>{{info[0].id}}</div>
       </section>
@@ -73,10 +73,9 @@ export default {
           .then( response => this.articleId = response.data.id)
     },
     removeItem(id) {
-      console.log(id)
-      // for(let i = 0; i < id.length; i++){
-      //   console.log(id)
-      // }
+      axios
+          .delete('http://localhost:3000/tools/' + id.id)
+          .then( response => console.log(response))
     }
   }
 }
