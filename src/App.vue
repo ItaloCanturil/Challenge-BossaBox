@@ -8,12 +8,12 @@
     </header>
     <div class="container">
       <nav class="nav-search">
-        <input type="search" name="search" id="search" class="nav-search__input">
         <label for="search">
-          <button>search</button>
+        <input type="search" name="search" id="search" class="nav-search__input">
+          <button class="btn--search">search</button>
         </label>
 
-        <button @click="addModal()">+ Add</button>
+        <button @click="addModal()" class="btn--add">+ Add</button>
       </nav>
 
       <ModalAdd
@@ -110,13 +110,33 @@ body{
 }
 
 .nav-search {
-  margin-top: -30px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: -45px;
 }
 
 .nav-search__input {
   border: 0;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 5px;
+}
+
+.btn--search {
+  background: #ffb703;
+  border: 0;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.btn--add {
+  background: #12a454;
+  border: 0;
   border-radius: 5px;
-  margin-right: 5px; 
+  cursor: pointer;
   padding: 5px;
 }
 </style>
