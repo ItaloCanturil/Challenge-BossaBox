@@ -29,7 +29,6 @@
           :key="items"
           @removeCard='removeItem($event)'
          />
-        <div>{{info[0].id}}</div>
       </section>
     </div>
   </div>
@@ -49,6 +48,7 @@ export default {
   data () {
     return {
       openedModal: false,
+      removeModal: false,
       info: null,
       articleId: null
     }
@@ -104,12 +104,19 @@ body{
 .header {
   background:#353372;
   color: #fff;
+  height: 25vh;
   width: 100%;
   text-align: center;
-  padding-bottom: 50px;
 }
 
 .nav-search {
   margin-top: -30px;
+}
+
+.nav-search__input {
+  border: 0;
+  border-radius: 5px;
+  margin-right: 5px; 
+  padding: 5px;
 }
 </style>
