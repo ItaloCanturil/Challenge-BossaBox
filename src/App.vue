@@ -25,7 +25,7 @@
       <section class="card-field">
         <card 
           :item="items"
-          v-for="items in info"
+          v-for="items in tools"
           :key="items"
           @removeCard='removeItem($event)'
          />
@@ -49,7 +49,7 @@ export default {
     return {
       openedModal: false,
       removeModal: false,
-      info: null,
+      tools: [],
       articleId: null
     }
   },
@@ -57,7 +57,7 @@ export default {
   mounted () {
     axios
       .get('http://localhost:3000/tools')
-      .then( response => {this.info = response.data})
+      .then( response => {this.tools = response.data})
   },
 
   methods: {
@@ -67,15 +67,20 @@ export default {
     closeModal() {
       this.openedModal = false
     },
-    addItem(items) {
-      axios
+     async addItem(items) {
+      const response = await axios
           .post('http://localhost:3000/tools', items)
-          .then( response => this.articleId = response.data.id)
+
+      this.tools = [...this.tools, response.data]
     },
-    removeItem(id) {
-      axios
-          .delete('http://localhost:3000/tools/' + id.id)
-          .then( response => console.log(response))
+     async removeItem(item) {
+      await axios.delete('http://localhost:3000/tools/' + item.id)
+      const newTools = this.tools
+      const toolRemoved = newTools.findIndex(tool => tool.id === item.id)
+      if( toolRemoved !== -1) {
+        newTools.splice(toolRemoved, 1);
+        this.tools = [...newTools]
+      }
     }
   }
 }

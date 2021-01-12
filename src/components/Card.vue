@@ -14,22 +14,12 @@
 
 export default {
   name: 'Card',
-
-  // data () {
-  //   return {
-  //     id: this.item.id
-  //   }
-  // },
   
   props: {
     item: {
       type: Object,
       required: true
-    },
-    // id: {
-    //   type: Number,
-    //   required: true
-    // }
+    }
   },
 
   methods: {
