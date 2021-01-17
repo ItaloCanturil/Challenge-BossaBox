@@ -1,24 +1,12 @@
-# test
+<h1 align="center">VUTTR</h1>
+---------------
+## About project
+  This project it's a front-end challenge for the platform BossaBox, like a todo but with fake api.
 
-## Project setup
-```
-npm install
-```
+## :computer: Used Technologies: 
+- Vue CLI
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 💡 Steps for finish project:
+- [ ] Make modal remove
+- [ ] Add preloader
+- [ ] Improve design
