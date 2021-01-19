@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axiosInstance from '../../services/api'
 
 export default {
   name: 'modalAdd',
@@ -37,8 +37,8 @@ export default {
   },
 
   mounted () {
-    axios
-      .get('http://localhost:3000/tools')
+    axiosInstance
+      .get('/tools')
       .then( response => {this.info = response})
   },
 

@@ -9,7 +9,13 @@
     <div class="container">
       <nav class="nav-search">
         <label for="search">
-        <input type="search" name="search" id="search" class="nav-search__input">
+        <input 
+          type="search"
+          name="search"
+          id="search"
+          class="nav-search__input"
+          v-model="search"
+        >
           <button class="btn--search">search</button>
         </label>
 
@@ -37,8 +43,7 @@
 <script>
 import Card from './components/Card'
 import ModalAdd from './components/ModalAdd'
-import axios from 'axios'
-
+import axiosInstance from '../services/api'
 export default {
   components: {
     Card,
@@ -50,14 +55,14 @@ export default {
       openedModal: false,
       removeModal: false,
       tools: [],
-      articleId: null
+      articleId: null,
+      search: ''
     }
   },
 
   mounted () {
-    axios
-      .get('http://localhost:3000/tools')
-      .then( response => {this.tools = response.data})
+    axiosInstance.get('/tools')
+        .then( response => {this.tools = response.data})
   },
 
   methods: {
@@ -68,20 +73,19 @@ export default {
       this.openedModal = false
     },
      async addItem(items) {
-      const response = await axios
-          .post('http://localhost:3000/tools', items)
+      const response = await axiosInstance.post('/tools', items)
 
       this.tools = [...this.tools, response.data]
     },
      async removeItem(item) {
-      await axios.delete('http://localhost:3000/tools/' + item.id)
+      await axiosInstance.delete('tools/' + item.id)
       const newTools = this.tools
       const toolRemoved = newTools.findIndex(tool => tool.id === item.id)
       if( toolRemoved !== -1) {
         newTools.splice(toolRemoved, 1);
         this.tools = [...newTools]
       }
-    }
+    },
   }
 }
 </script>
