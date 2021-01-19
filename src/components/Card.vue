@@ -46,4 +46,16 @@ export default {
    display: flex;
    justify-content: space-between;
  }
+
+ .container__close {
+   background-color: #e63946;
+   border: 0;
+   border-radius: 10px;
+   cursor: pointer;
+   padding: 5px;
+ }
+
+ .container__close:active {
+   box-shadow: inset -3px black;
+ }
 </style>
