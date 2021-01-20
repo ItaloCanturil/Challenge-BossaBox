@@ -16,7 +16,7 @@
           class="nav-search__input"
           v-model="search"
         >
-          <button class="btn--search">search</button>
+          <button class="btn--search" @click="searchItembyTitle()">search</button>
         </label>
 
         <button @click="addModal()" class="btn--add">+ Add</button>
@@ -44,6 +44,7 @@
 import Card from './components/Card'
 import ModalAdd from './components/ModalAdd'
 import axiosInstance from '../services/api'
+
 export default {
   components: {
     Card,
@@ -86,6 +87,10 @@ export default {
         this.tools = [...newTools]
       }
     },
+    async searchItembyTitle() {
+      await axiosInstance.get(`tools?q=${this.search}`)
+        .then( response =>  {this.tools = response.data})
+    }
   }
 }
 </script>
