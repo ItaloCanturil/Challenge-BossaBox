@@ -10,6 +10,7 @@
     <ModalRemove
       :opened-remove='openedRemove'
       @close-remove="closeModal()"
+      @remove="removeCard()"
     />
   </section>
 </template>
