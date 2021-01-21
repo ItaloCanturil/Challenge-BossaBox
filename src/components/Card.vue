@@ -7,10 +7,12 @@
     <p>{{item.description}}</p>
     <a href="#">{{item.link}}</a>
     <p>{{item.tags}}</p>
+    <ModalRemove/>
   </section>
 </template>
 
 <script>
+import ModalRemove from './ModalRemove'
 
 export default {
   name: 'Card',
@@ -20,6 +22,10 @@ export default {
       type: Object,
       required: true
     }
+  },
+
+  components : {
+    ModalRemove
   },
 
   methods: {
