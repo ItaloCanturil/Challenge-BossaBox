@@ -23,7 +23,7 @@
       </nav>
 
       <ModalAdd
-        :openedModal='openedModal'
+        :opened-modal='openedModal'
         @close="closeModal()"
         @form='addItem'
       />

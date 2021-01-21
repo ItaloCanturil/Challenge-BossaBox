@@ -2,12 +2,15 @@
   <section class="card">
     <div class="card__container">
       <a href="#" class="container__title"><p>{{item.title}}</p></a>
-      <button class="container__close" @click="removeCard()">Remove</button>
+      <button class="container__close" @click="addModal()">Remove</button>
     </div>
     <p>{{item.description}}</p>
     <a href="#">{{item.link}}</a>
     <p>{{item.tags}}</p>
-    <ModalRemove/>
+    <ModalRemove
+      :opened-remove='openedRemove'
+      @close-remove="closeModal()"
+    />
   </section>
 </template>
 
@@ -16,6 +19,12 @@ import ModalRemove from './ModalRemove'
 
 export default {
   name: 'Card',
+
+  data () {
+    return {
+      openedRemove: false
+    }
+  },
   
   props: {
     item: {
@@ -33,9 +42,14 @@ export default {
       this.$emit('removeCard', {
         id: this.item.id
       })
+    },
+    addModal () {
+      this.openedRemove = true
+    },
+    closeModal() {
+      this.openedRemove = false
     }
   }
-
 }
 </script>
 
