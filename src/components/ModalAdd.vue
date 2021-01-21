@@ -69,7 +69,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .modal-add {
   background: rgb(112, 112, 112);
   border-radius: 10px;
