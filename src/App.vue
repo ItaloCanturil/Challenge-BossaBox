@@ -87,8 +87,8 @@ export default {
         this.tools = [...newTools]
       }
     },
-    async searchItembyTitle () {
-      await axiosInstance.get(`tools?q=${this.search}`)
+     searchItembyTitle () {
+       axiosInstance.get(`tools?q=${this.search}`)
         .then(response => { this.tools = response.data })
     }
   }

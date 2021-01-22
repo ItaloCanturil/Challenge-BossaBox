@@ -6,7 +6,7 @@
     </div>
     <p>{{item.description}}</p>
     <a href="#">{{item.link}}</a>
-    <p>{{item.tags}}</p>
+    <p>{{ item.tags.join(' #') }}</p>
     <ModalRemove
       :opened-remove='openedRemove'
       @close-remove="closeModal()"
@@ -44,6 +44,12 @@ export default {
     },
     closeModal () {
       this.openedRemove = false
+    }
+  },
+
+  computed : {
+    tags () {
+      return console.log(this.item.tags)
     }
   }
 }
