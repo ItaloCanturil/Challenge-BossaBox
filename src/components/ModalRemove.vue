@@ -27,7 +27,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .modal {
   background: rgba(0, 0, 0, 0.8);
   display: flex;
