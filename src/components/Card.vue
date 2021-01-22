@@ -10,7 +10,7 @@
     <ModalRemove
       :opened-remove='openedRemove'
       @close-remove="closeModal()"
-      @remove="removeCard()"
+      @remove="$emit('removeCard')"
     />
   </section>
 </template>
@@ -26,7 +26,7 @@ export default {
       openedRemove: false
     }
   },
-  
+
   props: {
     item: {
       type: Object,
@@ -34,20 +34,15 @@ export default {
     }
   },
 
-  components : {
+  components: {
     ModalRemove
   },
 
   methods: {
-    removeCard () {
-      this.$emit('removeCard', {
-        id: this.item.id
-      })
-    },
     addModal () {
       this.openedRemove = true
     },
-    closeModal() {
+    closeModal () {
       this.openedRemove = false
     }
   }

@@ -41,7 +41,7 @@ export default {
   mounted () {
     axiosInstance
       .get('/tools')
-      .then( response => {this.info = response})
+      .then(response => { this.info = response })
   },
 
   props: {
@@ -52,8 +52,8 @@ export default {
   },
 
   methods: {
-    addTool() {
-      if(!this.title || !this.link || !this.description || !this.tags) return
+    addTool () {
+      if (!this.title || !this.link || !this.description || !this.tags) return
 
       this.$emit('form', {
         title: this.title,
@@ -132,7 +132,6 @@ export default {
   border: 0;
   cursor: pointer;
 }
-
 
 .btn__close {
   height: 20pt;

@@ -9,7 +9,7 @@
     <div class="container">
       <nav class="nav-search">
         <label for="search">
-        <input 
+        <input
           type="search"
           name="search"
           id="search"
@@ -29,11 +29,11 @@
       />
 
       <section class="card-field">
-        <card 
+        <card
           :item="items"
           v-for="items in tools"
-          :key="items"
-          @removeCard='removeItem($event)'
+          :key="items.id"
+          @removeCard='removeItem(items.id)'
          />
       </section>
     </div>
@@ -63,33 +63,33 @@ export default {
 
   mounted () {
     axiosInstance.get('/tools')
-        .then( response => {this.tools = response.data})
+      .then(response => { this.tools = response.data })
   },
 
   methods: {
-    addModal() {
+    addModal () {
       this.openedModal = true
     },
-    closeModal() {
+    closeModal () {
       this.openedModal = false
     },
-     async addItem(items) {
+    async addItem (items) {
       const response = await axiosInstance.post('/tools', items)
 
       this.tools = [...this.tools, response.data]
     },
-     async removeItem(item) {
-      await axiosInstance.delete('tools/' + item.id)
+    async removeItem (item) {
+      await axiosInstance.delete('tools/' + item)
       const newTools = this.tools
-      const toolRemoved = newTools.findIndex(tool => tool.id === item.id)
-      if( toolRemoved !== -1) {
-        newTools.splice(toolRemoved, 1);
+      const toolRemoved = newTools.findIndex(tool => tool.id === item)
+      if (toolRemoved !== -1) {
+        newTools.splice(toolRemoved, 1)
         this.tools = [...newTools]
       }
     },
-    async searchItembyTitle() {
+    async searchItembyTitle () {
       await axiosInstance.get(`tools?q=${this.search}`)
-        .then( response =>  {this.tools = response.data})
+        .then(response => { this.tools = response.data })
     }
   }
 }

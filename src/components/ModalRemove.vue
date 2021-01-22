@@ -7,7 +7,7 @@
           <img class="btn__img" src="../assets/Icon-Close-2px.svg" alt="Close">
         </button>
       </div>
-        <button @click="$smit('remove')" class="remove__btn">
+        <button class="remove__btn" @click="$emit('remove')">
           Remove
         </button>
     </section>
@@ -23,7 +23,7 @@ export default {
       type: Boolean,
       default: false
     }
-  },
+  }
 }
 </script>
 
@@ -76,8 +76,8 @@ export default {
   background: rgb(211, 9, 9);
   border-radius: 8px;
   border: 0;
+  cursor: pointer;
   padding: 10px;
 }
-
 
 </style>
