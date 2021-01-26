@@ -4,7 +4,7 @@
       <div class="remove__org">
         <h1 class="org__title">Remove this tool?</h1>
         <button class="org__btn" @click="$emit('close-remove')">
-          <img class="btn__img" src="../assets/Icon-Close-2px.svg" alt="Close">
+          <svg class="btn__img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.414 61.42"><g transform="translate(-568.793 -714.793)"><path class="a" d="M80,20.005l-60,60m60,0L20,20" transform="translate(549.501 695.5)"/></g></svg>
         </button>
       </div>
         <button class="remove__btn" @click="$emit('remove')">
@@ -30,6 +30,7 @@ export default {
 <style scoped>
 .modal {
   background: rgba(0, 0, 0, 0.8);
+  color: #0b090a;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,6 +69,9 @@ export default {
 }
 
 .btn__img {
+  fill: #0b090a;
+  stroke:#02040f;
+  stroke-width: 4px;
   width: 15pt;
   height: 15pt;
 }

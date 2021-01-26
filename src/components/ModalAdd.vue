@@ -4,7 +4,7 @@
       <div class="title">
         <h1>Add a new tool</h1>
         <button class="add__btn" @click="$emit('close')">
-          <img class="btn__close" src="../assets/Icon-Close-2px.svg" alt="Close">
+          <svg class="btn__close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 61.414 61.42"><g transform="translate(-568.793 -714.793)"><path class="a" d="M80,20.005l-60,60m60,0L20,20" transform="translate(549.501 695.5)"/></g></svg>
         </button>
       </div>
       <section class="form">
@@ -129,12 +129,16 @@ export default {
 }
 
 .add__btn {
-  border: 0;
+  background: none;
+  border: none;
   cursor: pointer;
 }
 
 .btn__close {
-  height: 20pt;
-  width: 20pt;
+  fill: #0b090a;
+  stroke:#02040f;
+  stroke-width: 4px;
+  width: 15pt;
+  height: 15pt;
 }
 </style>
