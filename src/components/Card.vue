@@ -6,7 +6,9 @@
     </div>
     <p>{{item.description}}</p>
     <a href="#">{{item.link}}</a>
-    <p>{{ item.tags.join(' #') }}</p>
+    <p>
+      <span v-for="(tag, index) in formattedTags" :key="index">{{ `#${tag} ` }}</span>
+    </p>
     <ModalRemove
       :opened-remove='openedRemove'
       @close-remove="closeModal()"
@@ -38,6 +40,13 @@ export default {
     ModalRemove
   },
 
+  computed: {
+    formattedTags () {
+      const tagsArray = this.item.tags.split(' ') // O ? diz para aplicação que pode não haver valor algum
+      return tagsArray
+    }
+  },
+
   methods: {
     addModal () {
       this.openedRemove = true
@@ -45,23 +54,18 @@ export default {
     closeModal () {
       this.openedRemove = false
     }
-  },
-
-  computed : {
-    tags () {
-      return console.log(this.item.tags)
-    }
   }
 }
 </script>
 
 <style>
  .card {
-   border: 1px solid black;
+   background: #8a817c;
    border-radius: 10px;
    margin: 30px 0 15px;
    padding: 15px;
-   min-width: 350px;
+   width: 500px;
+   max-width: 100vw;
  }
 
  .card__container {

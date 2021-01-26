@@ -87,8 +87,8 @@ export default {
         this.tools = [...newTools]
       }
     },
-     searchItembyTitle () {
-       axiosInstance.get(`tools?q=${this.search}`)
+    searchItembyTitle () {
+      axiosInstance.get(`tools?q=${this.search}`)
         .then(response => { this.tools = response.data })
     }
   }
@@ -96,6 +96,7 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
 *, ::after, ::before {
     margin: 0;
     padding: 0;
@@ -103,7 +104,8 @@ export default {
 }
 
 body{
-  font-family: 'Source Sans Pro', sans-serif;
+  background: #cce3de;
+  font-family: 'Fira Sans', sans-serif;
 }
 
 .container {
@@ -116,7 +118,7 @@ body{
 }
 
 .header {
-  background:#353372;
+  background:#6b9080;
   color: #fff;
   height: 25vh;
   width: 100%;
