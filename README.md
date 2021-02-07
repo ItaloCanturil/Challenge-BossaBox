@@ -6,7 +6,7 @@
 ## :computer: Used Technologies: 
 - Vue CLI
 
-## 💡 Steps for finish project:
-- [ ] Make modal remove
-- [ ] Add preloader
-- [ ] Improve design
+## 💡 What I learn with this project:
+- $emit and props
+- Requisition with Axios in VueCLI
+- Components manipulation
